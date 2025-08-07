@@ -1,0 +1,30 @@
+package br.com.senaisp.bauru.secao03.aula07;
+
+import java.util.Scanner;
+
+public class Exemplo05 {
+
+	public static void main(String[] args) {
+		Scanner  scan = new Scanner(Exemplo05.class.getResourceAsStream("cadastro.csv"));
+		//Trocando o token do scanner
+		scan.useDelimiter(",");
+		
+		for(int i=0;i<4;i++) {
+			//cuidado que é print e não println
+			System.out.print(scan.next().replace("\"","") + "\t");
+		}
+		
+		System.out.println();
+		
+		while(scan.hasNext()) {
+			System.out.print(Integer.parseInt(scan.next().replace("\r\n","")));
+			System.out.print("\t"+scan.next().replace("\"",""));
+			System.out.print("\t"+scan.nextInt());
+			System.out.println("\t"+scan.next().replace("\"",""));
+			
+		}
+		
+		scan.close();
+	}
+
+}
