@@ -21,7 +21,9 @@ public class CalculoBaskaraTest {
 			 //MOSTRANDO X1 E X2
 			 System.out.println("O valor de x1 = " + ca.getX1());
 			 System.out.println("O valor de x2 = " + ca.getX2());
+			 scan.close();
 		}
+		
 	}
 
 }

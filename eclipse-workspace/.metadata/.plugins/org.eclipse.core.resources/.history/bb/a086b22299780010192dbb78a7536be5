@@ -1,0 +1,7 @@
+package br.com.senaisp.bauru.secao05.aula11;
+
+public class Carta {
+	
+	public static final String[] NAIPES = {"♦", "♠", "♥", "♣" };
+
+}

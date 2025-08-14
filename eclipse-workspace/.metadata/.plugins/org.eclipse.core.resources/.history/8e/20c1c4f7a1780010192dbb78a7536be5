@@ -1,0 +1,67 @@
+package br.com.senaisp.bauru.secao05.aula11;
+
+public class Carta {
+	
+	public static final String[] NAIPES = {"♦", "♠", "♥", "♣" };
+	public static final String[] NUMEROS = {"A", "2", "3", "4","5", "6", "7", "8","9", "10", "J", "Q", "K" };
+	//CAMPOS
+	private String naipe;
+	private String numero;
+	private int valor;
+	//constructor
+	public Carta(int np, int num) {
+		setNaipe(np);
+		setNumero(num);
+		//teste logico se verdade se falso
+		setValor(num + 1 > 10 ? 10 : num + 1 );
+		
+	}
+	public String getNaipe() {
+		return naipe;
+	}
+	public String getNumero() {
+		return numero;
+	}
+	public int getValor() {
+		return valor;
+	}
+	private void setNaipe(int naipe) {
+		if (naipe<0 || naipe>3) {
+			System.out.println("Naipe invalido!");
+		}else {
+		this.naipe = NAIPES[naipe];
+		}
+	}
+	
+	private void setNumero(int numero) {
+		if (numero < 0 || numero > 12) {
+			System.out.println("Numero invalido - " + "informar 0 a 12");
+		} else {
+			this.numero = NUMEROS[numero];
+			setValor(numero > 9 ? 10:numero + 1);
+		}
+		
+	}
+	private void setValor(int valor) {
+		this.valor = valor;
+	}
+	@Override
+	public String toString() {
+		
+		
+		
+		
+	String ret = "┌─────┐\n"
+			  +  "│##   │\n"
+		   	   + "│  *  │\n"
+			+    "│   ##│\n"
+			+    "└─────┘";	
+	String spc = (getNumero().equals("10") ? "" : " ");
+	ret = ret.replaceFirst("##", getNumero() + spc);
+	ret = ret.replaceFirst("*", getNaipe());
+	ret = ret.replaceFirst("##", spc + getNumero());
+		
+	return ret;
+	}
+
+}
