@@ -5,6 +5,11 @@
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao04.aula10.CalculoBaskara"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="com.sun.source.util.DocTreePathScanner"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao08.aula13.BlackJackGame"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao05.aula11.Carta"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao08.aula13.BlackJackPlayer"/>
 </qualifiedTypeNameHistroy>
