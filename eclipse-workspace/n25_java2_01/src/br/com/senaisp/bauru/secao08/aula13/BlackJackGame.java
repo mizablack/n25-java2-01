@@ -21,6 +21,7 @@ public class BlackJackGame {
 		//Sortear 2 cartas para a banca
 		banca.getCartas().add(bar.sortearCarta());
 		banca.getCartas().add(bar.sortearCarta());
+		banca.setParou(true);
 	}
 	public ArrayList<BlackJackPlayer> getPlayers() {
 		return players;
@@ -37,38 +38,47 @@ public class BlackJackGame {
 	public void solicitarCarta(int play) {
 		if (play < players.size()) {
 			players.get(play).getCartas().add(bar.sortearCarta());
-			//checando se ha vencedor
+			//Checando se há vencedor
 			verificarFimJogo();
 		}
+	}
+	public void solicitarParada(int play) {
+		if (play < players.size()) {
+			players.get(play).setParou(true);
+			//Checando se há vencedor
+			verificarFimJogo();
 		}
-		private void verificarFimJogo() {
-			boolean haVencedor = false;
-			boolean todosPararam =false;
-			int maiorCarta = 0;
-			
+	}
+	private void verificarFimJogo() {
+		boolean haVencedor = false;
+		boolean todosPararam = true;
+		int maiorCarta = 0;
+		for (BlackJackPlayer pl : players) {
+			if (pl.getTotalCarta()==21) {
+				pl.setGanhador(true);
+				haVencedor = true;
+			} else if (pl.getTotalCarta()>21) {
+				pl.setPerdedor(true);
+			}
+			//Verificando se todos pararam
+			todosPararam = todosPararam && ( pl.isParou() || pl.isPerdedor() );
+			//Determinar quem é maior carta abaixo de 21
+			if (pl.getTotalCarta()<21 && pl.getTotalCarta()>maiorCarta) {
+				maiorCarta = pl.getTotalCarta();
+			}
+		}
+
+		if (todosPararam || haVencedor)
+			fimJogo = true;
+		//Setar os vencedores se não tiver 21 e todos pararam
+		if (todosPararam && !haVencedor) {
 			for (BlackJackPlayer pl : players) {
-				todosPararam = todosPararam && pl.isParou();
-				if (pl.getTotalCarta()==21) {
+				if (pl.getTotalCarta()==maiorCarta) {
 					pl.setGanhador(true);
-					haVencedor = true;
-				} else if (pl.getTotalCarta()>21) {
+				} else {
 					pl.setPerdedor(true);
 				}
-				//deteminar quem é maior carta abaixo de 21
-				if (pl.getTotalCarta()>21 && pl.getTotalCarta()>maiorCarta) {
-					maiorCarta = pl.getTotalCarta();
-				}
 			}
-			if (todosPararam || haVencedor) fimJogo = true;
-			// setar os  vencedores se não tivar 21 e todos pARARAM
-			if (todosPararam && !haVencedor) {
-				for (BlackJackPlayer pl : players) {
-					if (pl.getTotalCarta()==maiorCarta) {
-						pl.setGanhador(true);
-					} else {
-						pl.setPerdedor(true);
-					}
-				}
-			}
+		}
 	}
 }
