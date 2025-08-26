@@ -8,7 +8,7 @@ public class PessoaJuridica extends Pessoa {
        	 setTipoPessoa('J');
         }// fenchando contructor
         //constructor com
-        public PessoaJuridica   (String nom, String doc, String ende, String dtNas) throws Exception {
+        public PessoaJuridica   (String nom, String doc, String ende, String dtNas) throws DocumentosException, EnderecoException {
        	 super(nom, doc, ende, dtNas);
        	 setTipoPessoa('J');//
         }

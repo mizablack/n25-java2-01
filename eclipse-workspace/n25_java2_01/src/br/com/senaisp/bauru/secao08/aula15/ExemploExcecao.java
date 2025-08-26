@@ -25,12 +25,14 @@ public class ExemploExcecao {
 		}
 		System.out.println("Se mão der erro eu apareço!!");
 		dividirValor(10, 0);
-		
+		sc.close();
 	}
       public static void dividirValor (int a, int b) {
     	  if (b==0) {
     		  throw new RuntimeException("Ovalor de b deve ser maior ou menor que zero!");
     	  }
     	  System.out.println(a/b);
+    	
       }
+      
 }

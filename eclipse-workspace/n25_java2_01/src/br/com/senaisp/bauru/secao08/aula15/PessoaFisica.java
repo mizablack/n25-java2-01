@@ -6,7 +6,7 @@ public class PessoaFisica extends Pessoa {
         	 setTipoPessoa('F');
          }// fenchando contructor
          //constructor com
-         public PessoaFisica   (String nom, String doc, String ende, String dtNas) throws Exception {
+         public PessoaFisica   (String nom, String doc, String ende, String dtNas) throws DocumentosException, EnderecoException  {
         	 super(nom, doc, ende, dtNas);
         	 setTipoPessoa('F');//
         	 

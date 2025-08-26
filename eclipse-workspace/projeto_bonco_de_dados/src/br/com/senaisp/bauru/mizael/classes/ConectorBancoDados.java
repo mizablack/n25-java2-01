@@ -1,0 +1,5 @@
+package br.com.senaisp.bauru.mizael.classes;
+
+public class ConectorBancoDados {
+
+}
