@@ -16,9 +16,13 @@
     <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao08.aula15.DocumentosException"/>
     <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao08.aula15.EnderecoException"/>
     <fullyQualifiedTypeName name="br.com.senaisp.bauru.mizael.test.ConectorBancoDadosTesst"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.mizael.classes.Produto"/>
     <fullyQualifiedTypeName name="br.com.senaisp.bauru.mizael.classes.ConectorBancoDados"/>
 </qualifiedTypeNameHistroy>
