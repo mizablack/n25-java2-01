@@ -64,6 +64,56 @@ public class Produto {
 	}
 
 	// Metodos
+	public void atualizarBanco() {
+		String sql = "update produto set descricao= ? , saldo = ?, peco = ?, where id = ?";
+		// PARA SALVAR O REGISTRO, O ID DEVE SER MAIOR QUE ZERO
+		if (id > 0) {
+			try {
+				PreparedStatement stmt = conn.getConnection().prepareStatement(sql);
+				// PASSANDO OS PARAMENTRO PARA SQL
+				stmt.setString(1, getDescricao());
+				stmt.setDouble(2, getSaldo());
+				stmt.setDouble(3, getPreco());
+				stmt.setInt(4, id);
+				// EXECUTANDO A QUERY
+				int numLin = stmt.executeUpdate();
+				System.out.println("From afetadas " + numLin + " linhas");
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+	public void apagarRegistro() {
+		String sql = "delete from produto where id = ?";
+		// PARA SALVAR O REGISTRO, O ID DEVE SER MAIOR QUE ZERO
+		if (id > 0) {
+			try {
+				PreparedStatement stmt = conn.getConnection().prepareStatement(sql);
+				// PASSANDO OS PARAMENTRO PARA SQL
+				stmt.setInt(1, id);
+				// EXECUTANDO A QUERY
+				int numLin = stmt.executeUpdate();
+				System.out.println("From afetadas " + numLin + " linhas");
+				//LIMPANDO OS CONTEUDOS DO OBJETO
+				descricao = null;
+				preco = 0;
+				saldo = 0;
+				id = 0;
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+	// metodos estaticos
 	public static Produto create(String descricao, double saldo, double preco) throws SQLException {
 		Produto prd = new Produto(descricao, saldo, preco);
 		// Disparando o sql para inserir o registro
@@ -106,6 +156,28 @@ public class Produto {
 		}
 
 		return prd;
+	}
+
+	// CONSULTAR UM PRODUTO PELO ID
+	public static Produto consultarProdutoPorId(int pId) {
+		Produto ret = null;
+		try {
+			Connection conn = ConectorBancoDados.getInstancia().getConnection();
+			String sql = "select id, descricao, saldo, preco from produto where id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+
+			// ATRIBUIR O ID PARA DISPARAR A QUERY
+			stmt.setInt(1, pId);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				ret = parseResultado(rs);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
 
 	}
 
