@@ -31,4 +31,6 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
     <fullyQualifiedTypeName name="br.com.senaisp.bauru.mizael.classes.Produto"/>
+    <fullyQualifiedTypeName name="javax.management.InvalidApplicationException"/>
+    <fullyQualifiedTypeName name="javafx.scene.control.Button"/>
 </qualifiedTypeNameHistroy>

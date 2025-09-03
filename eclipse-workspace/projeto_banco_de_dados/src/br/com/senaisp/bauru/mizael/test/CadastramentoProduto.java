@@ -49,9 +49,28 @@ public class CadastramentoProduto {
 
 	}
 
-	private static Object excluirProduto(Scanner scan) {
-		// TODO Auto-generated method stub
-		return null;
+	private static void excluirProduto(Scanner scan) {
+		do {
+			Produto prod = pesquisarProduto(scan);
+			if (prod != null) {
+				mostraProduto(prod);
+				
+				String conf = confimarOperacao("Deseja excluir o registro? (S/N)", scan);
+				if (conf.toLowerCase().equals("s")) {
+					prod.apagarRegistro();
+				}
+				//FALTA CONTINUAR S/N
+				conf = confimarOperacao("Deseja continuar excluindo? (S/N)", scan);
+				if (conf.toLowerCase().equals("n")) {
+					break;
+				}
+
+			} else {
+				System.out.println("Produto não encontrado !");
+			}
+
+		} while (true);
+		
 	}
 
 	private static void alterarProduto(Scanner scan) {
@@ -63,6 +82,11 @@ public class CadastramentoProduto {
 				String conf = confimarOperacao("Deseja gravar as alterações? (S/N)", scan);
 				if (conf.toLowerCase().equals("s")) {
 					prod.atualizarBanco();
+				}
+				//FALTA CONTINUAR S/N
+				conf = confimarOperacao("Deseja continuar altetando? (S/N)", scan);
+				if (conf.toLowerCase().equals("n")) {
+					break;
 				}
 
 			} else {
@@ -100,6 +124,7 @@ public class CadastramentoProduto {
 			System.out.println("Digite o id a ser pesquisado");
 			try {
 				int pId = scan.nextInt();
+				scan.nextLine();//captura
 				prod = Produto.consultarProdutoPorId(pId);
 				break;
 			} catch (InputMismatchException e) {
@@ -114,7 +139,7 @@ public class CadastramentoProduto {
 		List<Produto> lista = Produto.listarProdutos();
 		for (Produto it : lista) {
 			System.out.print("Produto: " + it.getDescricao());
-			System.out.print(" - " + it.getId());
+			System.out.print(" - " + it.getId() + "-");
 			System.out.println("Saldo: " + it.getSaldo());
 		}
 
@@ -161,6 +186,7 @@ public class CadastramentoProduto {
 
 		System.out.println("Digite a Preço");
 		prod.setPreco(scan.nextDouble());
+		scan.nextLine(); //capturando o enter
 	}
 
 	private static String confimarOperacao(String msg, Scanner scan) {

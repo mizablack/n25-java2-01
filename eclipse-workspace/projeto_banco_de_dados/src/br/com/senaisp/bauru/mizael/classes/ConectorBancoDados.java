@@ -11,18 +11,20 @@ public class ConectorBancoDados {
 	// Objeto de conexão SQL
 	private Connection conn;
 	private ConectorBancoDados() throws SQLException {
-		connStr = "jdbc:sqlite:c:\\javalibs\\producao.db";
+		//connStr = "jdbc:sqlite:c:\\javalibs\\producao.db";
+		connStr = "jdbc:mysql://root@127.0.0.1/producao";
+		
 		conn = DriverManager.getConnection(connStr);
 	 criarEstritura();
 	}
 	private void criarEstritura() {
 		String tabela = """
 							CREATE TABLE IF NOT EXISTS produto (
-			    id        INTEGER         PRIMARY KEY AUTOINCREMENT
-			                              NOT NULL,
-			    descricao TEXT (100)      NOT NULL,
+			    id        INT NOT NULL AUTO_INCREMENT,
+			    descricao VARCHAR (100)      NOT NULL,
 			    saldo     NUMERIC (15, 2) NOT NULL,
-			    preco     NUMERIC (15, 2) NOT NULL
+			    preco     NUMERIC (15, 2) NOT NULL,
+			    CONSTRAINT produto_ok primary key (id)
 			);
 			""";
 		try{
