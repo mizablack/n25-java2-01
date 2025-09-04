@@ -1,26 +1,38 @@
 package br.com.senaisp.bauru;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class JavaFX_Main extends Application {
 
 	@Override
-	public void start(Stage arg0) throws Exception {
+	public void start(Stage primaryStage) throws Exception {
 		Button btn = new Button();
-		btn.setText("Say 'Hello World'");
+		btn.setText("Diga \"Ola Mundo!\"");
 		btn.setOnAction(new EventHandler<ActionEvent>() {
+			
 		@Override
 		public void handle(ActionEvent event) {
-		System.out.println("Hello World!");
+		System.out.println("Olá Mundo!");
 		}
 		});
-		StackPane root = new StackPane();
-		root.getChildren().add(btn);
-		Scene scene = new Scene(root, 300, 250);
-		primaryStage.setTitle("Hello World!");
-		primaryStage.setScene(scene);
+		Button btn02 = new Button("Novo Botão");
+		
+
+		
+		
+		HBox root = new HBox();
+		root.getChildren().add(btn);// ADICIONANDO O BOTÃO NO PAINEL
+		root.getChildren().add(btn02);// ADICIONANDO O BOTÃO NO PAINEL
+		Scene cena = new Scene(root, 300, 500);
+		primaryStage.setTitle("Minha primeira janela no Java FX");
+		primaryStage.setScene(cena);//ATRIBUINDO A CENA PARA A JANELA
 		primaryStage.show();
 		}//fim do método start
 		public static void main(String[] args) {
