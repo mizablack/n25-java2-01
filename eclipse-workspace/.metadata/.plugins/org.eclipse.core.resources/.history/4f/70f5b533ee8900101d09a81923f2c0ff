@@ -1,0 +1,109 @@
+package br.com.senaisp.bauru;
+
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.StrokeLineJoin;
+import javafx.scene.shape.StrokeType;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
+
+public class JavaFXExercicio01 extends Application {
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		
+		
+		Group noRoot = new Group();
+		
+		//CRIANDO OS COMPONENTES DA TELA
+		criarCoponentes(noRoot);
+			
+			Scene cena = new Scene(noRoot, 400, 400,Color.LIGHTBLUE);
+			primaryStage.setTitle("Itens JavaFX");
+			primaryStage.setScene(cena);//ATRIBUINDO A CENA PARA A JANELA
+			primaryStage.show();
+
+			}//fim do método start
+
+
+	private void criarCoponentes(Group noRoot) {
+		HBox cmp01 = new HBox();
+		Rectangle cmp02  = new Rectangle (400, 100,Color.PINK);
+		Text cmp03 = new Text("Dorm 6:\n200");
+		
+		Image img = new Image(getClass().getResource("Images/Duke.png").toString());
+		
+		ImageView cmp04 = new ImageView(img);
+		///REDIMENSIONAR A IMAGEM
+		cmp04.setFitWidth(100);//	DEIXANDO COM 100PX DE LARGURA
+		//AJUSTAR PARA NÃO DISTORCER A IMAGEM
+		cmp04.setPreserveRatio(true);		
+		//CRIANDO 3 BOTÕES
+			Button btn01 = new Button("Say 'Hello World");
+			Button btn02 = new Button("MizaBlack");
+			Button btn03 = new Button("Aula JavaFX");
+			
+			noRoot.getChildren().addAll(cmp01, cmp02,cmp03,cmp04);// ADICIONANDO O BOTÃO NO PAINEL
+			cmp01.getChildren().addAll(btn01, btn02,btn03);// ADICIONANDO O BOTÃO NO PAINEL
+			//AJUSTANDO POSIÇÕES
+			cmp01.setLayoutY(300);
+			cmp01.setPrefWidth(400);
+			//AJUSTANDO A IMAGEM
+			cmp04.setLayoutX(290);
+			cmp04.setLayoutY(10);
+			//Ajustando o texto
+			//https://docs.oracle.com/javafx/2/text/jfxpub-text.htm
+			
+			cmp03.setLayoutX(150);
+			cmp03.setLayoutY(200);
+			cmp03.setFont(Font.font("Verdana",FontWeight.BOLD,30));
+			cmp03.setFill(Color.RED);
+			cmp03.setTextAlignment(TextAlignment.CENTER);
+			//COLOCANDO CONTONO
+			cmp03.setStroke(Color.BLACK);
+			cmp03.setStrokeWidth(5);//ESPRESSURA DO CONTONO
+			cmp03.setStrokeType(StrokeType.OUTSIDE);//CONTORNO PARA FORA
+			cmp03.setStrokeLineCap(StrokeLineCap.ROUND);//CANTO ARREDONDADOS
+			cmp03.setStrokeLineJoin(StrokeLineJoin.ROUND); //JUNÇÕES ARREDONDADAS
+			//CRIANDO O EFEITO SOBRA
+			DropShadow ds = new DropShadow();
+			ds.setColor(Color.BLACK);
+			//APLICANDO O EFEITO NO TEXTO
+			cmp03.setEffect(ds);
+			
+			cmp02.setLayoutX(10);
+			cmp02.setLayoutY(10);
+			cmp02.setStroke(Color.ORANGE);
+			cmp02.setStrokeWidth(10);
+			//AJUSTANDO BOTÕES PARA SE AJUSTAR AO HBOX
+			HBox.setHgrow(btn01, Priority.ALWAYS);
+			HBox.setHgrow(btn02, Priority.ALWAYS);
+			HBox.setHgrow(btn03, Priority.ALWAYS);
+			
+			btn01.setMaxWidth(Double.MAX_VALUE);
+			btn02.setMaxWidth(Double.MAX_VALUE);
+			btn03.setMaxWidth(Double.MAX_VALUE);
+	}
+		
+		
+			public static void main(String[] args) {
+			launch(args);
+			
+
+	}
+
+	
+}
