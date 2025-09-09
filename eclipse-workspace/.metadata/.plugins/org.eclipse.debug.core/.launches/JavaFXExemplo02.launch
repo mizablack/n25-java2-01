@@ -14,4 +14,5 @@
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="br.com.senaisp.bauru.JavaFXExemplo02"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="projeto_javafx"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="projeto_javafx"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="--module-path ${JAVAFX_PATH} --add-modules javafx.media,javafx.controls,javafx.fxml"/>
 </launchConfiguration>
