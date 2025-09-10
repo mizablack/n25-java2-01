@@ -1,0 +1,56 @@
+package br.com.senaisp.bauru.classes;
+
+import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
+
+public class Duke extends Group {
+
+	private Image dukeImage;
+	private Image luvaImage;
+	private AudioClip som;
+	
+	private ImageView dukeImgVw;
+	private ImageView luvaImgVw;
+	
+	public Duke() {dukeImage = new Image(getClass().getResource("Images/Duke.png").toString());
+					luvaImage = new Image(getClass().getResource("Images/Glove.png").toString());
+					
+					dukeImgVw = new ImageView(dukeImage);
+					luvaImgVw = new ImageView(luvaImage);
+					//carregar si
+					som = new AudioClip(getClass().getResource("Audios/Note5.wav").toString());
+					
+					//Dimensionando e posicionando os itens
+					dukeImgVw.setFitWidth(50);
+					dukeImgVw.setPreserveRatio(true);// mater proporção da imagem
+					dukeImgVw.setY(10);
+					
+					luvaImgVw.setFitWidth(35);
+					luvaImgVw.setPreserveRatio(true);
+					luvaImgVw.setY(17);
+					//adicionando os itens no group
+					getChildren().addAll(dukeImgVw,luvaImgVw);
+					
+					// criando os eventos para o duke
+					criacaoEventos();
+					
+					
+					
+	}
+
+	private void criacaoEventos() {
+		setOnMouseClicked((me)-> { som.play(); });
+		//metodo para arrastar e soltar
+		setOnMouseClicked((me)-> { double largura = this.getBoundsInLocal().getWidth() / 2;
+								double altura = this.getBoundsInLocal().getHeight() / 2;
+								// posicionamento o personagem na scena
+								setLayoutX(me.getSceneX()-largura );
+								setLayoutY(me.getSceneY()-altura );
+		
+		
+		});
+	}
+	
+}

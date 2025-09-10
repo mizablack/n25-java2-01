@@ -22,7 +22,7 @@ public class ManipuladorImagensApp  extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		Group noRoot = new Group();
 		criarComponentes(noRoot);
-		Scene scena = new Scene(noRoot, 800, 600,Color.BEIGE);
+		Scene scena = new Scene(noRoot, 700, 500,Color.GRAY);
 		primaryStage.setTitle("Manipulando Mídias");
 		primaryStage.setScene(scena);//ATRIBUINDO A CENA PARA A JANELA
 		primaryStage.show();
@@ -47,19 +47,24 @@ public class ManipuladorImagensApp  extends Application {
 		Button btnStop = new Button("Stop");
 		
 		btnPlay.setLayoutX(100);
-		btnPause.setLayoutX(200);
-		btnStop.setLayoutX(300);
+		btnPause.setLayoutX(300);
+		btnStop.setLayoutX(500);
 		
 		
-		btnPlay.setLayoutY(450);
-		btnPause.setLayoutY(450);
-		btnStop.setLayoutY(450);
+		btnPlay.setLayoutY(10);
+		btnPause.setLayoutY(10);
+		btnStop.setLayoutY(10);
 		
 	btnPlay.setOnAction((ev)-> { mp.play(); });
 	btnPause.setOnAction((ev)-> { mp.pause(); });
 	btnStop.setOnAction((ev)-> { mp.stop(); });
 	
-	noRoot.getChildren().addAll(mvw, btnPlay, btnPause, btnStop);// ADICIONANDO O BOTÃO NO PAINEL
+	
+	Duke duk = new Duke();
+	duk.setLayoutX(20);
+	duk.setLayoutY(20);
+	
+	noRoot.getChildren().addAll(mvw, btnPlay, btnPause, btnStop,duk);// ADICIONANDO O BOTÃO NO PAINEL
 
 	
 	
